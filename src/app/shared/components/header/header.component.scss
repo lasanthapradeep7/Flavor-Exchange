@@ -1,0 +1,52 @@
+@use '../../../../styles/variables' as *;
+
+.header {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  
+  nav {
+    width: 100%;
+    max-width: $xl;
+    margin: 0 auto;
+    padding: 0 $spacing-4;
+  }
+}
+
+.logo {
+  font-size: $text-2xl;
+  font-weight: $font-bold;
+  color: $primary-color;
+  text-decoration: none;
+  
+  &:hover {
+    color: $primary-dark;
+  }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+}
+
+.nav-link {
+  padding: $spacing-2 $spacing-3;
+  border-radius: $radius-md;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  text-decoration: none;
+  color: $gray-700;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  &.active {
+    color: $primary-color;
+    font-weight: $font-semibold;
+  }
+}

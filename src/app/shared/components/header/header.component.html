@@ -1,0 +1,36 @@
+<header class="header">
+  <nav class="container">
+    <div class="flex justify-between items-center">
+      <a routerLink="/" class="logo">Flavor Exchange</a>
+      
+      <div class="nav-links">
+        <a routerLink="/recipes" routerLinkActive="active" 
+           class="nav-link">
+          Recipes
+        </a>
+        
+        <ng-container *ngIf="authService.currentUser$ | async as user; else loginButtons">
+          <a routerLink="/favorites" routerLinkActive="active"
+             class="nav-link">
+            Favorites
+          </a>
+          <button (click)="authService.logout()"
+                  class="btn btn-primary">
+            Logout
+          </button>
+        </ng-container>
+        
+        <ng-template #loginButtons>
+          <a routerLink="/auth/login" routerLinkActive="active"
+             class="nav-link">
+            Login
+          </a>
+          <a routerLink="/auth/register" routerLinkActive="active"
+             class="nav-link">
+            Sign Up
+          </a>
+        </ng-template>
+      </div>
+    </div>
+  </nav>
+</header>

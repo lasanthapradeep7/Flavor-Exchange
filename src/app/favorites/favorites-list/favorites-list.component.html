@@ -1,0 +1,18 @@
+<div class="favorites-container">
+  <h1 class="favorites-title">My Favorite Recipes</h1>
+
+  <div *ngIf="isLoading" class="loading-container">
+    <p>Loading favorites...</p>
+  </div>
+
+  <div *ngIf="!isLoading && favoriteRecipes.length === 0" class="empty-state">
+    <p>You haven't saved any recipes yet. <a routerLink="/recipes">Browse recipes</a> to find some favorites!</p>
+  </div>
+
+  <div *ngIf="!isLoading && favoriteRecipes.length > 0" class="favorites-grid">
+    <app-recipe-card 
+      *ngFor="let recipe of favoriteRecipes" 
+      [recipe]="recipe"
+    ></app-recipe-card>
+  </div>
+</div>

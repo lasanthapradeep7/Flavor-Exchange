@@ -1,0 +1,88 @@
+<div class="recipe-detail-container">
+  <div *ngIf="isLoading" class="loading-container">
+    <p>Loading recipe...</p>
+  </div>
+
+  <div *ngIf="!isLoading && !recipe" class="error-container">
+    <p>Recipe not found. <a routerLink="/recipes">Return to recipes</a></p>
+  </div>
+
+  <div *ngIf="recipe" class="recipe-detail">
+    <div class="recipe-header">
+      <div class="recipe-title-section">
+        <h1 class="recipe-title">{{ recipe.title }}</h1>
+        <div class="recipe-meta">
+          <span class="meta-item">
+            <i class="fas fa-clock"></i> {{ recipe.cookingTime }} mins
+          </span>
+          <span class="meta-item">
+            <i class="fas fa-user"></i> {{ recipe.servings }} servings
+          </span>
+          <span class="meta-item">
+            <i class="fas fa-star"></i> {{ recipe.rating }}
+          </span>
+        </div>
+      </div>
+
+      <div class="recipe-actions">
+        <button 
+          *ngIf="currentUserId"
+          class="btn btn-secondary"
+          (click)="toggleFavorite()"
+        >
+          <i class="fas" [class.fa-heart]="isFavorite" [class.fa-heart-o]="!isFavorite"></i>
+          {{ isFavorite ? 'Remove from Favorites' : 'Add to Favorites' }}
+        </button>
+
+        <ng-container *ngIf="currentUserId === recipe.authorId">
+          <a [routerLink]="['/recipes', recipe.id, 'edit']" class="btn btn-secondary">
+            Edit Recipe
+          </a>
+          <button class="btn btn-secondary" (click)="deleteRecipe()">
+            Delete Recipe
+          </button>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="recipe-content">
+      <div class="recipe-image-container">
+        <img [src]="recipe.imageUrl" [alt]="recipe.title" class="recipe-image">
+      </div>
+
+      <div class="recipe-info">
+        <div class="recipe-description">
+          <h2>Description</h2>
+          <p>{{ recipe.description }}</p>
+        </div>
+
+        <div class="recipe-tags">
+          <span *ngFor="let tag of recipe.tags" class="tag">
+            {{ tag }}
+          </span>
+        </div>
+
+        <div class="recipe-ingredients">
+          <h2>Ingredients</h2>
+          <ul>
+            <li *ngFor="let ingredient of recipe.ingredients">
+              {{ ingredient.amount }} {{ ingredient.unit }} {{ ingredient.name }}
+              <span *ngIf="ingredient.notes" class="ingredient-notes">
+                ({{ ingredient.notes }})
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="recipe-instructions">
+          <h2>Instructions</h2>
+          <ol>
+            <li *ngFor="let instruction of recipe.instructions">
+              {{ instruction }}
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

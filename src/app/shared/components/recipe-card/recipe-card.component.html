@@ -1,0 +1,28 @@
+<div class="recipe-card">
+  <img [src]="recipe.imageUrl" [alt]="recipe.title" class="recipe-image">
+  
+  <div class="recipe-content">
+    <h3 class="recipe-title">{{ recipe.title }}</h3>
+    
+    <div class="recipe-meta">
+      <span class="meta-item">
+        <i class="fas fa-clock"></i> {{ recipe.cookingTime }} mins
+      </span>
+      <span class="meta-item">
+        <i class="fas fa-star"></i> {{ recipe.rating }}
+      </span>
+    </div>
+    
+    <p class="recipe-description">{{ recipe.description }}</p>
+    
+    <div class="recipe-tags">
+      <span *ngFor="let tag of recipe.tags" class="tag">
+        {{ tag }}
+      </span>
+    </div>
+    
+    <a [routerLink]="['/recipes', recipe.id]" class="btn btn-primary view-recipe">
+      View Recipe
+    </a>
+  </div>
+</div>

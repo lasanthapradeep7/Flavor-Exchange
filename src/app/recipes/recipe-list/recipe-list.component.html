@@ -1,0 +1,31 @@
+<div class="recipe-list-container">
+  <div class="recipe-list-header">
+    <h1 class="recipe-list-title">Discover Recipes</h1>
+    
+    <div class="search-container">
+      <input 
+        type="text" 
+        [formControl]="searchControl" 
+        class="search-input" 
+        placeholder="Search recipes by title, ingredients, or tags..."
+      >
+    </div>
+  </div>
+  
+  <div class="recipe-list-content">
+    <div *ngIf="isLoading" class="loading-container">
+      <p>Loading recipes...</p>
+    </div>
+    
+    <div *ngIf="!isLoading && filteredRecipes.length === 0" class="empty-state">
+      <p>No recipes found. Try adjusting your search or <a routerLink="/recipes/new">create a new recipe</a>.</p>
+    </div>
+    
+    <div class="recipe-grid">
+      <app-recipe-card 
+        *ngFor="let recipe of filteredRecipes" 
+        [recipe]="recipe"
+      ></app-recipe-card>
+    </div>
+  </div>
+</div>
