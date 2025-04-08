@@ -1,1 +1,176 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use 'styles/variables' as *;
+
+// Variables
+$primary-color: #FF6B6B;
+$primary-dark: #FF5252;
+$gray-50: #F9FAFB;
+$gray-100: #F3F4F6;
+$gray-200: #E5E7EB;
+$gray-300: #D1D5DB;
+$gray-600: #4B5563;
+$gray-700: #374151;
+$gray-800: #1F2937;
+$gray-900: #111827;
+
+// Base styles
+body {
+  background-color: $gray-50;
+  color: $gray-900;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+// Common components
+.btn {
+  padding: $spacing-2 $spacing-4;
+  border-radius: $radius-md;
+  font-weight: $font-medium;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  
+  &-primary {
+    background-color: $primary-color;
+    color: white;
+    
+    &:hover {
+      background-color: $primary-dark;
+    }
+  }
+  
+  &-secondary {
+    background-color: $gray-200;
+    color: $gray-800;
+    
+    &:hover {
+      background-color: $gray-300;
+    }
+  }
+}
+
+.input {
+  width: 100%;
+  padding: $spacing-2 $spacing-3;
+  border: 1px solid $gray-300;
+  border-radius: $radius-md;
+  
+  &:focus {
+    outline: none;
+    border-color: transparent;
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+  }
+}
+
+.label {
+  display: block;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  color: $gray-700;
+  margin-bottom: $spacing-1;
+}
+
+// Layout utilities
+.container {
+  width: 100%;
+  max-width: $xl;
+  margin: 0 auto;
+  padding: 0 $spacing-4;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.space-x-4 > * + * {
+  margin-left: $spacing-4;
+}
+
+// Text utilities
+.text-sm {
+  font-size: $text-sm;
+}
+
+.text-xl {
+  font-size: $text-xl;
+}
+
+.text-2xl {
+  font-size: $text-2xl;
+}
+
+.font-medium {
+  font-weight: $font-medium;
+}
+
+.font-semibold {
+  font-weight: $font-semibold;
+}
+
+.font-bold {
+  font-weight: $font-bold;
+}
+
+// Spacing utilities
+.p-4 {
+  padding: $spacing-4;
+}
+
+.px-3 {
+  padding-left: $spacing-3;
+  padding-right: $spacing-3;
+}
+
+.py-2 {
+  padding-top: $spacing-2;
+  padding-bottom: $spacing-2;
+}
+
+.px-4 {
+  padding-left: $spacing-4;
+  padding-right: $spacing-4;
+}
+
+.py-4 {
+  padding-top: $spacing-4;
+  padding-bottom: $spacing-4;
+}
+
+.py-8 {
+  padding-top: $spacing-8;
+  padding-bottom: $spacing-8;
+}
+
+.mb-1 {
+  margin-bottom: $spacing-1;
+}
+
+.mb-2 {
+  margin-bottom: $spacing-2;
+}
+
+.mb-4 {
+  margin-bottom: $spacing-4;
+}
+
+// Card styles
+.card {
+  background-color: white;
+  border-radius: $radius-lg;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+// Image utilities
+.img-cover {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+}
